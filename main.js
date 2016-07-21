@@ -21,7 +21,7 @@ var app = {
             chrome.browserAction.setBadgeBackgroundColor({color: color.BLACK});
             chrome.browserAction.setBadgeText({text: "OFF"});
         } else {
-            chrome.browserAction.setBadgeBackgroundColor({color: color.RED}); // red
+            chrome.browserAction.setBadgeBackgroundColor({color: color.GREEN}); 
             chrome.browserAction.setBadgeText({text: "ON"});
         }
     },
