@@ -1,0 +1,25 @@
+{
+   "background": {
+      "persistent": true,
+      "scripts": [ "main.js" ]
+   },
+   "browser_action": {
+      "default_icon": "myicons.png"
+   },
+   "description": "auto-refresh the current tab every 16 seconds",
+   
+
+   "homepage_url": "https://github.com/sweeneyapps/",
+  
+   "manifest_version": 2,
+   "name": "Job Auto-Refresh",
+  
+  
+   "permissions": [ 
+     "tabs", 
+     "activeTab", 
+     "http://www.vphreak.net/*",
+     "*://*.rainforestqa.com/*"
+     ],
+   "version": "1.0"
+}
