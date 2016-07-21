@@ -87,7 +87,7 @@ var app = {
                         // let reload the job
                         chrome.tabs.reload(appState.workTab.id);
                         console.log("found result!!");
-                        
+
                     } else if (re2.test(result[0])) {
                         // another worker accepted the job :(
                         app.allStop();
@@ -99,8 +99,6 @@ var app = {
                         alert("Virtual Machine might be BACK!");
                         chrome.tabs.update(appState.workTab.id, {highlighted: true});
                     }
-                    
-
                 });
 
 
