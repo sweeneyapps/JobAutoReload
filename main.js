@@ -79,13 +79,21 @@ var app = {
                     
                     console.log(result);
                     var re = /no virtual machines currently available/;
+                    var re2 = /Another worker accepted the job before you/;
 
                     if (re.test(result[0])) {
                         // no virtual machine still on screen
                         
                         // let reload the job
                         chrome.tabs.reload(appState.workTab.id);
-                        console.log("found result!!")
+                        console.log("found result!!");
+                        
+                    } else if (re2.test(result[0])) {
+                        // another worker accepted the job :(
+                        app.allStop();
+                        alert("Sorry, another worker accepted the job before you!");
+                        chrome.tabs.update(appState.workTab.id, {highlighted: true});
+
                     } else {
                         app.allStop();
                         alert("Virtual Machine might be BACK!");
