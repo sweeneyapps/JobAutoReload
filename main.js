@@ -7,7 +7,7 @@ var appState = { workTab: null };
 var color = {
     RED: [255,0,0,255],
     BLACK: [0,0,0,255],
-    GREEN: [23,23,23,100]
+    GREEN: [0,255,0,255]
 };
 
 
@@ -63,7 +63,7 @@ var app = {
     getTabInfo: () => {
         chrome.tabs.query( {currentWindow: true, active: true, highlighted: true} , t => {
             if (chrome.runtime.lastError) {} // in case.. use later
-            console.log(t[0].id);
+        
             
             var re = /tester\.rainforestqa\.com\/tester\//;
             //  var re = /www\.vphreak\.net/;
@@ -72,8 +72,8 @@ var app = {
                 console.log("rainforest tab found");
                 appState.workTab = t[0];
 
+                // capture warning message on rainforest job page
                 var code = "document.querySelector('div.warning-message > div').innerHTML";
-                // var code = "document.querySelector('#hidden').innerHTML";
                 
                 chrome.tabs.executeScript(appState.workTab.id, {code: code}, (result) => {
                     
@@ -82,11 +82,10 @@ var app = {
                     var re2 = /Another worker accepted the job before you/;
 
                     if (re.test(result[0])) {
-                        // no virtual machine still on screen
+                        // no virtual machine message still on screen
                         
                         // let reload the job
                         chrome.tabs.reload(appState.workTab.id);
-                        console.log("found result!!");
 
                     } else if (re2.test(result[0])) {
                         // another worker accepted the job :(
