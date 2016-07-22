@@ -14,7 +14,7 @@ var color = {
 var app = {
     timeout: null,
     running: false,
-    HOW_LONG: 16 * 1000, // need test server response.  If too many request, increase to 20 seconds
+    HOW_LONG: 20 * 1000, // 20 seconds refresh rate.
 
     toggleBadge: (on) => {
         if (!on) {
