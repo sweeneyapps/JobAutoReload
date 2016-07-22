@@ -4,6 +4,7 @@
 ---------------------
 ## Instruction on how to install this plugins
 
+- clone or download ZIP from this github site
 - on Chrome, go to chrome://extensions/
 - make sure Developer Mode is checked (on upper-right corner of the page)
 - click "Load unpacked extension..." button
