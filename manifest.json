@@ -18,7 +18,6 @@
    "permissions": [ 
      "tabs", 
      "activeTab", 
-     "http://www.vphreak.net/*",
      "*://*.rainforestqa.com/*"
      ],
    "version": "1.0"
