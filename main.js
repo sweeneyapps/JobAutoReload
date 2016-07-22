@@ -91,8 +91,11 @@ var app = {
                         // "no virtual machine" message still on screen
                         
                         // let reload the job
+                        // debugging
+                        console.count("load");
                         chrome.tabs.reload(appState.workTab.id, () => {
                             app.checkAndReload(false);
+                            console.count("loaded");
                         });
 
                     } else if (re2.test(result[0])) {
