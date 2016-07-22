@@ -38,9 +38,7 @@ var app = {
                 app.toggleBadge(true);
                 app.run();
             } else {
-                app.toggleBadge(false);
-                app.running = false;
-                clearTimeout(app.timeout); // stop the loop
+                app.allStop();
             }
         });
 
@@ -48,10 +46,8 @@ var app = {
 
     run: () => {
 
-        app.getTabInfo();
+        app.getTabInfoAndReload();
 
-        clearTimeout(app.timeout);
-        app.timeout = setTimeout(app.run, app.HOW_LONG);
     },
 
     allStop: () => {  
@@ -60,29 +56,39 @@ var app = {
         app.toggleBadge(false);
     },
 
-    getTabInfo: () => {
+    getTabInfoAndReload: () => {
         chrome.tabs.query( {currentWindow: true, active: true, highlighted: true} , t => {
-            if (chrome.runtime.lastError) {} // in case.. use later
+            if (chrome.runtime.lastError) {} // in case if needed... can use it later
         
-            
+            // regEx to check Rainforest Job URL
             var re = /tester\.rainforestqa\.com\/tester\//;
-            //  var re = /www\.vphreak\.net/;
+           
             if(re.test(t[0].url)) {
                 // it's rainforest job! :)
-                console.log("rainforest tab found");
                 appState.workTab = t[0];
 
-                // capture warning message on rainforest job page
-                var code = "document.querySelector('div.warning-message > div').innerHTML";
-                
-                chrome.tabs.executeScript(appState.workTab.id, {code: code}, (result) => {
+                app.checkAndReload(); // loop until found
+
+            } else {
+                alert("This is NOT rainforest Job!, please only use rainforest job tab");
+                app.allStop();
+            }
+        });
+    },
+
+    checkAndReload: () => {
+        // capture warning message on rainforest job page
+        var code = "document.querySelector('div.warning-message > div').innerHTML";
                     
-                    console.log(result);
+        chrome.tabs.executeScript(appState.workTab.id, {code: code}, (result) => {
+                    if (chrome.runtime.lastError) {  app.allStop(); }
+
+                    
                     var re = /no virtual machines currently available/;
                     var re2 = /Another worker accepted the job before you/;
 
                     if (re.test(result[0])) {
-                        // no virtual machine message still on screen
+                        // "no virtual machine" message still on screen
                         
                         // let reload the job
                         chrome.tabs.reload(appState.workTab.id);
@@ -98,25 +104,16 @@ var app = {
                         alert("Virtual Machine might be BACK!");
                         chrome.tabs.update(appState.workTab.id, {highlighted: true});
                     }
-                });
+            });
 
+            // loop until virtual machine errors disappears.
 
-
-            } else {
-                alert("This is NOT rainforest Job!");
-                app.allStop();
-            }
-        });
+            clearTimeout(app.timeout);
+            app.timeout = setTimeout(app.checkAndReload, app.HOW_LONG);
     }
 };
 
-app.setup();
-
-/*
-
-    div.warning-message > div    // css for warning message..  look up css reference.
-       message: "There are no virtual machines currently available. Please retry in a few minutes."
 
 
+app.setup();  // launch point for Chrome Extension to load.
 
-*/
