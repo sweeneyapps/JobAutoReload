@@ -107,9 +107,12 @@ var app = {
             });
 
             // loop until virtual machine errors disappears.
-
-            clearTimeout(app.timeout);
-            app.timeout = setTimeout(app.checkAndReload, app.HOW_LONG);
+            
+            if (app.running) {
+                 clearTimeout(app.timeout);
+                 app.timeout = setTimeout(app.checkAndReload, app.HOW_LONG);
+            }
+           
     }
 };
 
