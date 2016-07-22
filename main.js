@@ -91,12 +91,7 @@ var app = {
                         // "no virtual machine" message still on screen
                         
                         // let reload the job
-                        // debugging
-                        console.count("load");
-                        chrome.tabs.reload(appState.workTab.id, () => {
-                            app.checkAndReload(false);
-                            console.count("loaded");
-                        });
+                        chrome.tabs.reload(appState.workTab.id);
 
                     } else if (re2.test(result[0])) {
                         // another worker accepted the job :(
