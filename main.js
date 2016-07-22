@@ -67,7 +67,7 @@ var app = {
                 // it's rainforest job! :)
                 appState.workTab = t[0];
 
-                app.checkAndReload(); // loop until found
+                app.checkAndReload(true); // loop until found
 
             } else {
                 alert("This is NOT rainforest Job!, please only use rainforest job tab");
@@ -76,7 +76,7 @@ var app = {
         });
     },
 
-    checkAndReload: () => {
+    checkAndReload: (loop) => {
         // capture warning message on rainforest job page
         var code = "document.querySelector('div.warning-message > div').innerHTML";
                     
@@ -91,7 +91,9 @@ var app = {
                         // "no virtual machine" message still on screen
                         
                         // let reload the job
-                        chrome.tabs.reload(appState.workTab.id);
+                        chrome.tabs.reload(appState.workTab.id, () => {
+                            app.checkAndReload(false);
+                        });
 
                     } else if (re2.test(result[0])) {
                         // another worker accepted the job :(
@@ -108,7 +110,7 @@ var app = {
 
             // loop until virtual machine errors disappears.
             
-            if (app.running) {
+            if (app.running && loop) {
                  clearTimeout(app.timeout);
                  app.timeout = setTimeout(app.checkAndReload, app.HOW_LONG);
             }
