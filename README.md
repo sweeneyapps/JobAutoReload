@@ -14,7 +14,7 @@
 
 ## How to use?
 
-- Smiley icon will be loaded w/ "NO" text
+- Smiley icon will be loaded w/ "OFF" text
 - It will only work with Rainforest job tab
 - To start, you'll have to select the Rainforest job tab first then click the Smiley face icon.
 - It will keep on reloading the page every 20 second until No Virtual Machine message disappears.
