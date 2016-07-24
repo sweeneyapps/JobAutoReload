@@ -84,8 +84,8 @@ var app = {
             if (chrome.runtime.lastError) {} // in case if needed... can use it later
         
             // regEx to check Rainforest Job URL
-            // var re = /tester\.rainforestqa\.com\/tester\//;
-               var re = /http/;
+               var re = /tester\.rainforestqa\.com\/tester\//;
+               
 
            
             if(re.test(t[0].url)) {
@@ -106,8 +106,6 @@ var app = {
 
     checkAndReload: () => {
         // capture warning message on rainforest job page
-       // var code = "document.querySelector('div.warning-message > div').innerHTML";
-        // var code = "document.body.innerHTML";
            var code = "document.querySelector('body').innerHTML";
 
         chrome.tabs.executeScript(appState.workTab.id, {code: code}, (result) => {
