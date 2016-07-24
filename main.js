@@ -39,7 +39,9 @@ var app = {
         chrome.idle.setDetectionInterval(60);
         chrome.idle.onStateChanged.addListener(state => { 
             if (state !== "active") {
-                app.allStop();  // idle or locked more than 1 minutes..  forget it  (Be fair to other workers)
+                if (app.running) {
+                     app.allStop();  // idle or locked more than 1 minutes..  forget it  (Be fair to other workers)
+                }
             }
         });
         
