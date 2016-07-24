@@ -5,7 +5,6 @@
 
 var appState = { workTab: null };
 var color = {
-    RED: [255,0,0,255],
     BLACK: [0,0,0,255],
     GREEN: [0,255,0,255]
 };
@@ -23,7 +22,7 @@ var app = {
         } else {
             chrome.browserAction.setBadgeBackgroundColor({color: color.GREEN}); 
             chrome.browserAction.setBadgeText({text: "ON"});
-        }
+        } 
     },
 
     setup: () => { 
@@ -31,8 +30,23 @@ var app = {
         app.toggleBadge(false);
     },
 
+
+    // setup Chrome Events
+
     setupEvents: () => {
+        
+        
+        chrome.idle.setDetectionInterval(60);
+        chrome.idle.onStateChanged.addListener(state => { 
+            if (state !== "active") {
+                app.allStop();  // idle or locked more than 1 minutes..  forget it  (Be fair to other workers)
+            }
+        });
+        
+
         chrome.browserAction.onClicked.addListener( () => {
+   
+
             app.running = !app.running;
             if(app.running){
                 app.toggleBadge(true);
@@ -44,11 +58,15 @@ var app = {
 
     },
 
+    // run the program
+
     run: () => {
 
         app.getTabInfoAndReload();
 
     },
+
+    // stop the program
 
     allStop: () => {  
         app.running = false;  
@@ -56,12 +74,17 @@ var app = {
         app.toggleBadge(false);
     },
 
+
+    // check to see if current tab is an actual Rainforest job!
+
     getTabInfoAndReload: () => {
         chrome.tabs.query( {currentWindow: true, active: true, highlighted: true} , t => {
             if (chrome.runtime.lastError) {} // in case if needed... can use it later
         
             // regEx to check Rainforest Job URL
-            var re = /tester\.rainforestqa\.com\/tester\//;
+            // var re = /tester\.rainforestqa\.com\/tester\//;
+               var re = /http/;
+
            
             if(re.test(t[0].url)) {
                 // it's rainforest job! :)
@@ -76,18 +99,29 @@ var app = {
         });
     },
 
-    checkAndReload: (loop) => {
+
+    // main part of the program (run loop)
+
+    checkAndReload: () => {
         // capture warning message on rainforest job page
-        var code = "document.querySelector('div.warning-message > div').innerHTML";
-                    
+       // var code = "document.querySelector('div.warning-message > div').innerHTML";
+        // var code = "document.body.innerHTML";
+           var code = "document.querySelector('body').innerHTML";
+
         chrome.tabs.executeScript(appState.workTab.id, {code: code}, (result) => {
-                    if (chrome.runtime.lastError) {  app.allStop(); }
+                    if (chrome.runtime.lastError) {  
+                        console.log("error happened.. " + chrome.runtime.lastError.message);
+                        app.allStop();
+                        return;
+                    }
 
-                    
-                    var re = /no virtual machines currently available/;
-                    var re2 = /Another worker accepted the job before you/;
+                    console.log(result);
 
-                    if (re.test(result[0])) {
+                    var re  = /no virtual machines currently available/i;
+                    var re2 = /Another worker accepted the job before you/i;
+                    var re3 = /Rate limit exceeded/i;
+
+                    if (re.test(result[0]) || re3.test(result[0])) {
                         // "no virtual machine" message still on screen
                         
                         // let reload the job
@@ -108,7 +142,8 @@ var app = {
 
             // loop until virtual machine errors disappears.
             
-            if (app.running && loop) {
+            if (app.running) {
+                 console.log("still running");
                  clearTimeout(app.timeout);
                  app.timeout = setTimeout(app.checkAndReload, app.HOW_LONG);
             }

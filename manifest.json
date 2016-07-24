@@ -6,7 +6,7 @@
    "browser_action": {
       "default_icon": "myicons.png"
    },
-   "description": "auto-refresh the current tab every 16 seconds",
+   "description": "auto-refresh the current tab every 20 seconds",
    
 
    "homepage_url": "https://github.com/sweeneyapps/",
@@ -15,10 +15,12 @@
    "name": "Job Auto-Refresh",
   
   
-   "permissions": [ 
+   "permissions": [
+     "idle", 
      "tabs", 
      "activeTab", 
      "*://*.rainforestqa.com/*"
+  
      ],
    "version": "1.0"
 }
