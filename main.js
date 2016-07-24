@@ -115,8 +115,6 @@ var app = {
                         return;
                     }
 
-                    console.log(result);
-
                     var re  = /no virtual machines currently available/i;
                     var re2 = /Another worker accepted the job before you/i;
                     var re3 = /Rate limit exceeded/i;
