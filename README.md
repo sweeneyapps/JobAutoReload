@@ -20,6 +20,12 @@
 - It will keep on reloading the page every 20 second until No Virtual Machine message disappears.
 - You can stop anytime by clicking the icon again and it will switch to "OFF"
 
+## Extra Stuff
+
+- PC: Control-Shift-A
+- Mac: Command-Shift-A
+- What's that?!  Whenever You get to the Math question, if you execute the command: you will get alert box with the ANSWER!!
+- Time Saver!
 
 ---------------------
 
