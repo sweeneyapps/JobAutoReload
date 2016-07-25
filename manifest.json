@@ -8,6 +8,16 @@
    },
    "description": "auto-refresh the current tab every 20 seconds",
    
+   "commands": {
+      "add-this-string" : { 
+        "suggested_key": {
+          "default": "Ctrl+Shift+A",
+          "mac": "Command+Shift+A"
+        }, 
+        "description": "add 2 numbers from a string on webpage", 
+        "global": false } 
+   },
+   
 
    "homepage_url": "https://github.com/sweeneyapps/",
   
