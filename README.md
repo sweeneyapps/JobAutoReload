@@ -23,7 +23,7 @@
 ## Extra Stuff
 
 - PC: Control-Shift-A
-- Mac: Command-Shift-A
+- Mac: (You'll have to set it manually at the end of Extension Page in Chrome, "Keyboard shortcuts" link.)
 - What's that?!  Whenever You get to the Math question, if you execute the command: you will get alert box with the ANSWER!!
 - Time Saver!
 
