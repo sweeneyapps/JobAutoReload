@@ -1,5 +1,5 @@
 # JobAutoReload
-- only for Rainforest jobs..  it just refresh your tab every 20 seconds to get through the no VM trouble.
+- only for Rainforest jobs..  it just refresh your tab every 30 seconds to get through the no VM trouble.
 
 ---------------------
 ## Instruction on how to install this plugins
