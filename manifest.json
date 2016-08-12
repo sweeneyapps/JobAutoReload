@@ -6,7 +6,7 @@
    "browser_action": {
       "default_icon": "myicons.png"
    },
-   "description": "auto-refresh the current tab every 20 seconds",
+   "description": "auto-refresh the current tab every 30 seconds",
    
    "commands": {
       "add-this-string" : { 
