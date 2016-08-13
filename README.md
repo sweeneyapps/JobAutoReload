@@ -27,6 +27,18 @@
 - What's that?!  Whenever You get to the Math question, if you execute the command: you will get alert box with the ANSWER!!
 - Time Saver!
 
+## Instruction on updating if you cloned this repo
+
+### Cloning this repo
+- git clone git@github.com:sweeneyapps/JobAutoReload.git
+- cd JobAutoReload
+
+### Updating
+- go to the current directory of JobAutoReload
+- git pull
+- Go to chrome://extensions/
+- Look for JobAutoReload and hit the Reload link
+
 ---------------------
 
 if u have any suggestions or issues,  leave ur message up on Isssues tab here.
