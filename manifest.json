@@ -34,10 +34,14 @@
      "storage",
      "*://*.rainforestqa.com/*"
      ],
+<<<<<<< HEAD
 
    "name": "Job Auto-Refresh",
    "version": "1.0.2",
    "description": "auto-refresh the current tab every 30 seconds",
    "homepage_url": "https://github.com/sweeneyapps/"
    
+=======
+   "version": "1.0.1"
+>>>>>>> 55d5808a6f227696a4c61b1ad5f9d286b481fbfb
 }
