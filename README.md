@@ -17,8 +17,9 @@
 - Smiley icon will be loaded w/ "OFF" text
 - It will only work with Rainforest job tab
 - To start, you'll have to select the Rainforest job tab first then click the Smiley face icon.
-- It will keep on reloading the page every 20 second until No Virtual Machine message disappears.
+- It will keep on reloading the page repeatly until the "No Virtual Machine" message disappears.
 - You can stop anytime by clicking the icon again and it will switch to "OFF"
+- You can change the interval time for reloading in the options page.
 
 ## Extra Stuff
 
@@ -26,6 +27,10 @@
 - Mac: (You'll have to set it manually at the end of Extension Page in Chrome, "Keyboard shortcuts" link.)
 - What's that?!  Whenever You get to the Math question, if you execute the command: you will get alert box with the ANSWER!!
 - Time Saver!
+
+## Updates
+
+- Options page added!
 
 ---------------------
 

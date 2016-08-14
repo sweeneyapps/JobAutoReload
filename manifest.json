@@ -1,12 +1,21 @@
 {
+   "manifest_version": 2,
+   
    "background": {
       "persistent": true,
       "scripts": [ "main.js" ]
    },
+
+   "options_page": "options.html",
+
+   "options_ui": {
+     "page": "options.html",
+     "chrome_style": true
+   },
+   
    "browser_action": {
       "default_icon": "myicons.png"
-   },
-   "description": "auto-refresh the current tab every 30 seconds",
+   }, 
    
    "commands": {
       "add-this-string" : { 
@@ -18,19 +27,17 @@
         "global": false } 
    },
    
-
-   "homepage_url": "https://github.com/sweeneyapps/",
-  
-   "manifest_version": 2,
-   "name": "Job Auto-Refresh",
-  
-  
    "permissions": [
      "idle", 
      "tabs", 
-     "activeTab", 
+     "activeTab",
+     "storage",
      "*://*.rainforestqa.com/*"
-  
      ],
-   "version": "1.0"
+
+   "name": "Job Auto-Refresh",
+   "version": "1.0.2",
+   "description": "auto-refresh the current tab every 30 seconds",
+   "homepage_url": "https://github.com/sweeneyapps/"
+   
 }
