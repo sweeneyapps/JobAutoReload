@@ -34,7 +34,6 @@
 - new job alert (sound) on the options page, you can pick your own sound url
 
 
-=======
 ## Instruction on updating if you cloned this repo
 
 ### Cloning this repo
