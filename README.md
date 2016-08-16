@@ -28,7 +28,12 @@
 - What's that?!  Whenever You get to the Math question, if you execute the command: you will get alert box with the ANSWER!!
 - Time Saver!
 
-<<<<<<< HEAD
+## Updates 1.0.3
+
+- interval time on options page
+- new job alert (sound) on the options page, you can pick your own sound url
+
+
 =======
 ## Instruction on updating if you cloned this repo
 
@@ -41,7 +46,7 @@
 - git pull
 - Go to chrome://extensions/
 - Look for JobAutoReload and hit the Reload link
->>>>>>> 55d5808a6f227696a4c61b1ad5f9d286b481fbfb
+
 
 ---------------------
 

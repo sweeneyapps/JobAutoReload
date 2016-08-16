@@ -13,6 +13,7 @@ var app = {
   timeout: null,
   running: false,
   HOW_LONG: 30 * 1000, // 30 seconds refresh rate. (DEFAULT)
+  SOUND_URL: "http://www.soundjay.com/button/beep-02.mp3", // default
 
   toggleBadge: (on) => {
     if (!on) {
@@ -26,18 +27,38 @@ var app = {
 
   setup: () => { 
     chrome.storage.sync.get("interval", function(items) {
-      app.HOW_LONG = items.interval * 1000;
+      if (items.interval !== undefined) {
+        app.HOW_LONG = items.interval * 1000;
+      }
+    });
+    chrome.storage.sync.get("url", function(items) {
+      if (items.url !== undefined) {
+        app.SOUND_URL = items.url;
+      }
     });
     app.setupEvents(); 
     app.toggleBadge(false);
   },
 
   // setup Chrome Events
-  setupEvents: () => {     
+  setupEvents: () => {   
+    // listening to rainforest job tabs
+    chrome.tabs.onCreated.addListener( tabs => {
+      const re = /tester\.rainforestqa\.com\/tester\//; 
+      if (re.test(tabs.url)) {
+        var playSound = new Audio(app.SOUND_URL);
+        playSound.play();
+      }
+    });
+
     chrome.storage.onChanged.addListener((changes, areaName) => {
       if (changes["interval"] !== undefined) {
         var seconds = changes["interval"].newValue;
         app.HOW_LONG = seconds * 1000; 
+      }
+      if (changes["url"] !== undefined) {
+        var soundURL = changes["url"].newValue;
+        app.SOUND_URL = soundURL;
       }  
     });
 
