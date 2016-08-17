@@ -14,6 +14,7 @@ var app = {
   running: false,
   HOW_LONG: 30 * 1000, // 30 seconds refresh rate. (DEFAULT)
   SOUND_URL: "http://www.soundjay.com/button/beep-02.mp3", // default
+  audioPlayer: new Audio(app.SOUND_URL),
 
   toggleBadge: (on) => {
     if (!on) {
@@ -34,6 +35,7 @@ var app = {
     chrome.storage.sync.get("url", function(items) {
       if (items.url !== undefined) {
         app.SOUND_URL = items.url;
+        app.audioPlayer = new Audio(app.SOUND_URL);
       }
     });
     app.setupEvents(); 
@@ -46,8 +48,7 @@ var app = {
     chrome.tabs.onCreated.addListener( tabs => {
       const re = /tester\.rainforestqa\.com\/tester\//; 
       if (re.test(tabs.url)) {
-        var playSound = new Audio(app.SOUND_URL);
-        playSound.play();
+        app.audioPlayer.play();
       }
     });
 
@@ -56,9 +57,11 @@ var app = {
         var seconds = changes["interval"].newValue;
         app.HOW_LONG = seconds * 1000; 
       }
+      
       if (changes["url"] !== undefined) {
         var soundURL = changes["url"].newValue;
         app.SOUND_URL = soundURL;
+        app.audioPlayer = new Audio(app.SOUND_URL);
       }  
     });
 

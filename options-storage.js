@@ -35,14 +35,15 @@ function update() {
   });
 }
 
-// use this in the future as reset function
-function clearStorage(){
-  chrome.storage.sync.clear();
+function resetSettings() {
+  chrome.storage.sync.clear(function(){ 
+    update(); 
+  });
 }
 
 document.addEventListener("DOMContentLoaded", function(event) {
-  // clearStorage();  //debugging and reset
   update();
   document.getElementById("interval").onchange = saveIntervalChanges;
   document.getElementById("saveUrl").onclick = saveURLChanges;
+  document.getElementById("reset").onclick = resetSettings;
 });
