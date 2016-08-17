@@ -37,6 +37,11 @@ var app = {
           app.audioPlayer = new Audio(app.SOUND_URL);
         }
   },
+  
+  loadAndPlayDefaultAudioPlayer: () {
+    app.audioPlayer = new Audio(app.DEFAULT_SOUND);
+    app.audioPlayer.play();
+  },
 
   setup: () => { 
     chrome.storage.sync.get("interval", function(items) {
@@ -63,7 +68,13 @@ var app = {
     chrome.tabs.onCreated.addListener( tabs => {
       const re = /tester\.rainforestqa\.com\/tester\//; 
       if (re.test(tabs.url)) {
-        app.audioPlayer.play();
+        try {
+          app.audioPlayer.play();  
+        }
+        catch(err) {
+          app.loadAndPlayDefaultAudioPlayer();
+        }
+        
       }
     });
 
