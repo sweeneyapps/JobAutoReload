@@ -38,7 +38,7 @@ var app = {
     }
   },
   
-  loadAndPlayDefaultAudioPlayer: () {
+  loadAndPlayDefaultAudioPlayer: () => {
     app.audioPlayer = new Audio(app.DEFAULT_SOUND);
     app.audioPlayer.play();
   },
