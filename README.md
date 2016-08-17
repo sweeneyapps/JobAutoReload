@@ -28,10 +28,11 @@
 - What's that?!  Whenever You get to the Math question, if you execute the command: you will get alert box with the ANSWER!!
 - Time Saver!
 
-## Updates 1.0.3
+## Updates 1.0.4
 
 - interval time on options page
 - new job alert (sound) on the options page, you can pick your own sound url
+- reset settings added
 
 
 ## Instruction on updating if you cloned this repo
