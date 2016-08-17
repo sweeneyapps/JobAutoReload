@@ -14,7 +14,7 @@ var app = {
   running: false,
   HOW_LONG: 30 * 1000, // 30 seconds refresh rate. (DEFAULT)
   SOUND_URL: "http://www.soundjay.com/button/beep-02.mp3", // default
-  audioPlayer: new Audio(app.SOUND_URL),
+  audioPlayer: null,
 
   toggleBadge: (on) => {
     if (!on) {
@@ -57,7 +57,7 @@ var app = {
         var seconds = changes["interval"].newValue;
         app.HOW_LONG = seconds * 1000; 
       }
-      
+
       if (changes["url"] !== undefined) {
         var soundURL = changes["url"].newValue;
         app.SOUND_URL = soundURL;
