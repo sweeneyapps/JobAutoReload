@@ -29,12 +29,12 @@ var app = {
 
   loadAudioPlayer: (url) => {
     try {
-          app.audioPlayer = new Audio(app.SOUND_URL);
+          app.audioPlayer = new Audio(url);
         } 
         catch(err) {
           console.log(err);
           app.SOUND_URL = app.DEFAULT_SOUND;
-          app.audioPlayer = new Audio(app.SOUND_URL)
+          app.audioPlayer = new Audio(app.SOUND_URL);
         }
   },
 

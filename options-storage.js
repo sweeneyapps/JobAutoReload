@@ -25,12 +25,14 @@ function update() {
       select.value = items.interval;
     } else {
       select.value = DEFAULT;
+      chrome.storage.sync.set({'interval': select.value});
     }
 
     if (items.url != undefined){
       url.value = items.url;
     } else {
       url.value = DEFAULT_SOUND;
+      chrome.storage.sync.set({'url': url.value});
     }
   });
 }
