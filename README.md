@@ -1,4 +1,4 @@
-# JobAutoReload
+# JobAutoReload (Sound Support only // Auto Reload is disabled)
 - only for Rainforest jobs..  it just refresh your tab every 30 seconds to get through the no VM trouble.
 
 ---------------------
