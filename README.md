@@ -1,5 +1,5 @@
-# JobAutoReload (Sound Support only // Auto Reload is disabled)
-- only for Rainforest jobs..  it just refresh your tab every 30 seconds to get through the no VM trouble.
+# JobAutoReload (Sound Support only)
+- only for Rainforest jobs..  ~~it just refresh your tab every 30 seconds to get through the no VM trouble.~~
 
 ---------------------
 ## Instruction on how to install this plugins
@@ -16,10 +16,10 @@
 
 - Smiley icon will be loaded w/ "OFF" text
 - It will only work with Rainforest job tab
-- To start, you'll have to select the Rainforest job tab first then click the Smiley face icon.
-- It will keep on reloading the page repeatly until the "No Virtual Machine" message disappears.
-- You can stop anytime by clicking the icon again and it will switch to "OFF"
-- You can change the interval time for reloading in the options page.
+- ~~To start, you'll have to select the Rainforest job tab first then click the Smiley face icon.~~
+- ~~It will keep on reloading the page repeatly until the "No Virtual Machine" message disappears.~~
+- ~~You can stop anytime by clicking the icon again and it will switch to "OFF"~~
+- ~~You can change the interval time for reloading in the options page.~~
 
 ## Extra Stuff
 
