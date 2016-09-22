@@ -126,6 +126,8 @@ var app = {
     });
       
     chrome.browserAction.onClicked.addListener( () => {
+      // Disabled Auto Loading function due to new RainforestQA policy on reload page
+      /**************
       app.running = !app.running;
       if(app.running){
         app.toggleBadge(true);
@@ -133,6 +135,7 @@ var app = {
       } else {
         app.allStop();
       }
+      *************/
     });
 
   },
