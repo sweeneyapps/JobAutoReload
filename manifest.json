@@ -36,7 +36,7 @@
      ],
 
    "name": "Job Auto-Refresh",
-   "version": "1.0.4",
+   "version": "1.0.5",
    "description": "auto-refresh the current tab every 30 seconds",
    "homepage_url": "https://github.com/sweeneyapps/"
 }
