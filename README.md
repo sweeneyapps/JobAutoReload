@@ -34,6 +34,11 @@
 - new job alert (sound) on the options page, you can pick your own sound url
 - reset settings added
 
+## Updates 1.0.5
+
+- No longer run Auto Job Reload anymore due to new policy at Rainforest
+- Sound Support still work.
+
 
 ## Instruction on updating if you cloned this repo
 
